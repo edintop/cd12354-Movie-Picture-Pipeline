@@ -1,0 +1,9 @@
+name: 'Frontend Continuous Integration'
+on:
+  workflow_dispatch:
+
+  pull_request:
+    paths:
+      - starter/frontend/**
+    branches:
+      - main
