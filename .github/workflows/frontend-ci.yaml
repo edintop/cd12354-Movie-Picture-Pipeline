@@ -23,17 +23,13 @@ jobs:
         shell: bash
         run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
       - name: Cache node modules
-        id: cache-npm
         uses: actions/cache@v3
-        env:
-          cache-name: cache-node-modules
+        id: npm-cache
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-lint-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-lint-${{ env.cache-name }}-
-            ${{ runner.os }}-lint-
-            ${{ runner.os }}-
+            ${{ runner.os }}-node-
       - name: Install dependencies
         run: cd starter/frontend && npm ci
       - name: Run the linter
@@ -53,17 +49,13 @@ jobs:
         shell: bash
         run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
       - name: Cache node modules
-        id: cache-npm
         uses: actions/cache@v3
-        env:
-          cache-name: cache-node-modules
+        id: npm-cache
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-test-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-test-${{ env.cache-name }}-
-            ${{ runner.os }}-test-
-            ${{ runner.os }}-
+            ${{ runner.os }}-node-
       - name: Install dependencies
         run: cd starter/frontend && npm ci
       - name: Run the tests
@@ -84,17 +76,13 @@ jobs:
         shell: bash
         run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
       - name: Cache node modules
-        id: cache-npm
         uses: actions/cache@v3
-        env:
-          cache-name: cache-node-modules
+        id: npm-cache
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+            ${{ runner.os }}-node-
       - name: Install dependencies
         run: cd starter/frontend && npm ci
       - name: Run the tests
