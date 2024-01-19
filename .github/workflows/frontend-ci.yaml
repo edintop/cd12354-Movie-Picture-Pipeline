@@ -35,9 +35,9 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - name: Install dependencies
-        run: cd setup/frontend && npm ci
+        run: cd setup/starter/frontend && npm ci
       - name: Run the linter
-        run: cd setup/frontend && npm run lint
+        run: cd setup/starter/frontend && npm run lint
 
   test:
     runs-on: ubuntu-latest
@@ -65,9 +65,9 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - name: Install dependencies
-        run: cd setup/frontend && npm ci
+        run: cd setup/starter/frontend && npm ci
       - name: Run the tests
-        run: cd setup/frontend && npm test
+        run: cd setup/starter/frontend && npm test
 
   build:
     needs: [lint, test]
@@ -96,6 +96,6 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - name: Install dependencies
-        run: cd setup/frontend && npm ci
+        run: cd setup/starter/frontend && npm ci
       - name: Run the tests
-        run: cd setup/frontend && npm test
+        run: cd setup/starter/frontend && npm test
