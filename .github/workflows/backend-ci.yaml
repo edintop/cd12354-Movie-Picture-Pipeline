@@ -55,5 +55,6 @@ jobs:
           key: ${{ runner.os }}-python-${{ steps.setup-python.ouputs.python-version }}
       - name: Install dependencies
         run: cd starter/backend && pipenv install --dev
+        # todo use docker to build application
       - name: Run test
         run: cd starter/backend && pipenv run pytest
