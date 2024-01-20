@@ -58,3 +58,5 @@ jobs:
         # todo use docker to build application
       - name: Run test
         run: cd starter/backend && pipenv run pytest
+      - name: Build docker image
+        run: docker build starter/backend
