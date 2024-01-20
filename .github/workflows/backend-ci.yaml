@@ -20,10 +20,10 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ~/.local/share/virtualenvs
-          key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
+          key: ${{ runner.os }}-python-${{ steps.setup-python.ouputs.python-version }}
       - name: Install dependencies
         run: cd starter/backend && pipenv install --dev
-      - name: Run lint
+      - name: Run the linter
         run: cd starter/backend && pipenv run lint
 
   test:
@@ -37,7 +37,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ~/.local/share/virtualenvs
-          key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
+          key: ${{ runner.os }}-python-${{ steps.setup-python.ouputs.python-version }}
       - name: Install dependencies
         run: cd starter/backend && pipenv install --dev
       - name: Run the tests
@@ -55,7 +55,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ~/.local/share/virtualenvs
-          key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
+          key: ${{ runner.os }}-python-${{ steps.setup-python.ouputs.python-version }}
       - name: Install dependencies
         run: cd starter/backend && pipenv install --dev
       - name: Run the tests
