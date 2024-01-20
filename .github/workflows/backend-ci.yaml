@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: cd starter/backend && pipenv install --dev
       - name: Run lint
-        run: cd starter/backend pipenv run lint
+        run: cd starter/backend && pipenv run lint
 
   test:
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
       - name: Install dependencies
         run: cd starter/backend && pipenv install --dev
       - name: Run lint
-        run: cd starter/backend pipenv run pytest
+        run: cd starter/backend && pipenv run pytest
 
   build:
     needs: [lint, test]
@@ -56,4 +56,4 @@ jobs:
       - name: Install dependencies
         run: cd starter/backend && pipenv install --dev
       - name: Run lint
-        run: cd starter/backend pipenv run pytest
+        run: cd starter/backend && pipenv run pytest
