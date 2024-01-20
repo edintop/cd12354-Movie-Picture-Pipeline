@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Set up Python
         id: setup-python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
       - uses: actions/cache@v3
         with:
           path: ~/.local/share/virtualenvs
@@ -33,7 +33,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Set up Python
         id: setup-python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
       - uses: actions/cache@v3
         with:
           path: ~/.local/share/virtualenvs
@@ -51,7 +51,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Set up Python
         id: setup-python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
       - uses: actions/cache@v3
         with:
           path: ~/.local/share/virtualenvs
