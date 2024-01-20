@@ -15,7 +15,7 @@
   },
   "scripts": {
     "serve": "serve -s build",
-    "lint": "eslint --fix .",
+    "lint": "eslint .",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns",
