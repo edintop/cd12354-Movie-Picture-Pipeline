@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+env:
+  APP_URL: http://localhost:5000
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -60,4 +63,4 @@ jobs:
       - name: Run the tests
         run: cd starter/frontend && npm test
       - name: Build docker image
-        run: docker build starter/frontend -t ${{ github.sha }}
+        run: docker build starter/frontend -t ${{ github.sha }} --build-arg REACT_APP_MOVIE_API_URL="$APP_URL"
