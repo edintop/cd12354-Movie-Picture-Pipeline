@@ -90,5 +90,6 @@ jobs:
           REPOSITORY: ${{env.ECR_REPO}}
           IMAGE_TAG: ${{ github.sha }}
         run: |
+          cd starter/frontend/k8s
           kustomize edit set image frontend=$REGISTRY/$REPOSITORY:$IMAGE_TAG
           kustomize build | kubectl apply -f -
