@@ -92,6 +92,7 @@ jobs:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: ${{env.ECR_REPO}}
           IMAGE_TAG: ${{ github.sha }}
+          KUBECONFIG: ~/.kube/config
         run: |
           cd starter/backend/k8s
           kustomize edit set image backend=$REGISTRY/$REPOSITORY:$IMAGE_TAG
