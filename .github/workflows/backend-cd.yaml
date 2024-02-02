@@ -82,6 +82,11 @@ jobs:
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG ./starter/backend
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
+      - name: Configure k8s cluster
+        working-directory: starter/backend/k8s
+        run: |
+            aws eks update-kubeconfig --name cluster --region us-east-1
+
       - name: Deploy to kubernetes
         env: 
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
