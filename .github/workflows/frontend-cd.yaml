@@ -89,12 +89,16 @@ jobs:
         run: |
             aws eks update-kubeconfig --name cluster --region us-east-1
 
-      - name: Deploy to kubernetes
-        env: 
+      - name: Set docker image
+        working-directory: starter/frontend/k8s
+        env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: ${{env.ECR_REPO}}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          cd starter/frontend/k8s
-          kustomize edit set image frontend=$REGISTRY/$REPOSITORY:$IMAGE_TAG
+          kustomize edit set image backend=$REGISTRY/$REPOSITORY:$IMAGE_TAG
+
+      - name: Deploy to kubernetes
+        working-directory: starter/frontend/k8s
+        run: |
           kustomize build | kubectl apply -f -
